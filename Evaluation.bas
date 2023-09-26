@@ -32,8 +32,15 @@ Sub EvaluateSheet()
 		Next cell
 
 		total = cell.Row - row.Row - 1
+		cell.NumberFormat = "@"
+		cell.Value = nr_green & "/" & total
 		percent = nr_green / total
-		cell.Value = percent * 100 & "%" & " (" & nr_green & ")"
+		cell.Offset(1, 0).Value = percent * 100 & "%"
+		If percent >= 0.9 Then
+			cell.Offset(1, 0).Interior.Color = GREEN
+		Else
+			cell.Offset(1, 0).Interior.Color = RED
+		End If
 
 		Set row = row.Offset(0, 1)
 	Loop

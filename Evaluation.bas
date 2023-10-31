@@ -1,8 +1,9 @@
-' This file is part of https://github.com/serkonda7/excel-cfr-color-evaluator.
-' Copyright (c) 2023-present Lukas Neubert.
-' This Source Code is subject to the terms of the Mozilla Public License 2.0.
+' SPDX-FileCopyrightText: 2023-present Lukas Neubert <lukas.neubert@proton.me>
+' SPDX-License-Identifier: MPL-2.0
 
 Option Explicit
+
+Private Const RATIO_FOR_GREEN = 0.9
 
 Private Const WHITE = 16777215
 Private Const GREEN = 13561798
@@ -39,7 +40,7 @@ Sub EvaluateSheet()
 		percent = nr_green / total
 		cell.NumberFormat = "0%"
 		cell.Value = percent
-		If percent >= 0.9 Then
+		If percent >= RATIO_FOR_GREENRATIO_FOR_GREEN Then
 			cell.Interior.Color = GREEN
 		Else
 			cell.Interior.Color = RED
